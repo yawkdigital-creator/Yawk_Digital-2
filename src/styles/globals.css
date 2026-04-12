@@ -1,0 +1,262 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-hover: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --scrollbar-track: #f1f5f9;
+    --scrollbar-thumb: #cbd5e1;
+    --scrollbar-thumb-hover: #94a3b8;
+  }
+
+  .dark {
+    /* Dark theme colors */
+    --bg-primary: #030712;
+    --bg-secondary: #020617;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #64748b;
+    --glass-bg: rgba(15, 23, 42, 0.6);
+    --glass-hover: rgba(15, 23, 42, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --scrollbar-track: #030712;
+    --scrollbar-thumb: rgba(239, 68, 68, 0.3);
+    --scrollbar-thumb-hover: rgba(239, 68, 68, 0.5);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Improve touch scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
+    /* Prevent text size adjustment on iOS */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .font-heading {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer components {
+  /* Glass Card Effect */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    background: var(--glass-hover);
+    border-color: rgba(239, 68, 68, 0.2);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+  }
+
+  .dark .glass-card:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, #ff3b3b 0%, #8e2de2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Interactive Button */
+  .btn-interactive {
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .btn-interactive:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px rgba(239, 68, 68, 0.4);
+  }
+
+  .btn-interactive:active {
+    transform: translateY(-1px) scale(0.96);
+  }
+
+  /* Primary Glow Button */
+  .btn-primary-glow:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 
+      0 0 30px 2px rgba(239, 68, 68, 0.6), 
+      0 0 60px -10px rgba(139, 92, 246, 0.4),
+      0 15px 35px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(239, 68, 68, 0.3) transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 16px 0;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(239, 68, 68, 0.3);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+    border: none;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(239, 68, 68, 0.5);
+  }
+
+  .dark .custom-scrollbar {
+    scrollbar-color: rgba(239, 68, 68, 0.4) transparent;
+  }
+
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(239, 68, 68, 0.4);
+    border: none;
+  }
+
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(239, 68, 68, 0.6);
+  }
+}
+
+@layer utilities {
+  /* Selection */
+  ::selection {
+    background-color: rgba(239, 68, 68, 0.3);
+  }
+
+  /* Global Scrollbar - Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+
+  /* Global Scrollbar - Webkit (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    transition: background-color 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+  }
+
+  /* Dark mode scrollbar improvements */
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgba(239, 68, 68, 0.3);
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(239, 68, 68, 0.5);
+  }
+
+  .dark * {
+    scrollbar-color: rgba(239, 68, 68, 0.3) var(--scrollbar-track);
+  }
+
+  /* Touch-friendly interactions */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Ensure minimum touch target size - but allow exceptions for navigation links */
+  button:not(nav a):not(nav button),
+  a:not(nav a),
+  [role="button"]:not(nav [role="button"]),
+  input[type="button"],
+  input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Navigation links can be smaller but still touch-friendly */
+  nav a {
+    min-height: 36px;
+    min-width: auto;
+  }
+
+  /* Improve tap highlight on mobile */
+  * {
+    -webkit-tap-highlight-color: rgba(239, 68, 68, 0.1);
+  }
+
+  /* Better focus states for keyboard navigation */
+  button:focus-visible,
+  a:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 2px solid rgba(239, 68, 68, 0.5);
+    outline-offset: 2px;
+  }
+
+  /* Hide scrollbar utility */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ── Text caret always visible in both themes ───────────────────────────── */
+  /* Light mode: dark caret so it shows on both white and dark (modal) inputs */
+  input,
+  textarea,
+  [contenteditable] {
+    caret-color: #ef4444; /* red-500 — stands out on any background */
+  }
+
+  /* Custom Cursor - Only on desktop (non-touch devices) */
+  @media (hover: hover) and (pointer: fine) {
+    *,
+    input,
+    textarea,
+    select,
+    button,
+    a,
+    label,
+    [disabled],
+    [aria-disabled="true"] {
+      cursor: none !important;
+    }
+  }
+}

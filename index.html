@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Yawk Digital | Revenue Growth Systems & Performance Marketing</title>
+    <meta name="title" content="Yawk Digital | Revenue Growth Systems & Performance Marketing" />
+    <meta name="description" content="Yawk Digital is a high-end digital marketing agency specializing in revenue systems, performance marketing, and CRM automation for elite brands." />
+    <meta name="keywords" content="digital marketing agency, performance marketing, revenue growth systems, CRM automation" />
+    <meta name="author" content="Yawk Digital" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#030712" />
+    <link rel="canonical" href="https://yawk.digital/" />
+    
+    <!-- Prevent theme flash by applying theme class before React renders -->
+    <script>
+      (function() {
+        // Check localStorage first
+        const savedTheme = localStorage.getItem('theme');
+        let theme = savedTheme;
+        
+        // If no saved theme, check system preference
+        if (!theme || (theme !== 'light' && theme !== 'dark')) {
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+            theme = 'light';
+          } else {
+            theme = 'dark';
+          }
+        }
+        
+        // Apply theme class immediately
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('light');
+          const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+          if (metaThemeColor) {
+            metaThemeColor.setAttribute('content', '#030712');
+          }
+        } else {
+          document.documentElement.classList.add('light');
+          document.documentElement.classList.remove('dark');
+          const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+          if (metaThemeColor) {
+            metaThemeColor.setAttribute('content', '#ffffff');
+          }
+        }
+      })();
+    </script>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yawk.digital/" />
+    <meta property="og:title" content="Yawk Digital | Revenue Growth Systems & Performance Marketing" />
+    <meta property="og:description" content="Scale your revenue with the world's most advanced growth operating system." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200&h=630" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://yawk.digital/" />
+    <meta property="twitter:title" content="Yawk Digital | Revenue Growth Systems & Performance Marketing" />
+    <meta property="twitter:description" content="Scale your revenue with the world's most advanced growth operating system." />
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200&h=630" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=2" />
+    <link rel="icon" type="image/png" sizes="128x128" href="/favicon.png?v=2" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png?v=2" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=2" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=2" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#030712" />
+    <meta name="theme-color" content="#030712" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
