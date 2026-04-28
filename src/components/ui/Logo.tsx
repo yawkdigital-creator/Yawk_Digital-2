@@ -29,7 +29,7 @@ export const Logo: React.FC<LogoProps> = ({ className = "", iconOnly = false }) 
       }}
     >
       <img
-        src="/logo.png"
+        src="/logo-2.png"
         alt="Yawk Digital Logo"
         className={imgClass}
       />
