@@ -31,8 +31,14 @@ const COUNTRIES = [
   { code: 'OTHER', flagCode: '',   name: 'Other',           symbol: '$',   rate: 1      },
 ];
 
-// USD budget tier boundaries
+// USD budget tier boundaries (used for every country EXCEPT the overrides below)
 const USD_TIERS = [500, 1500, 5000];
+
+// Country-specific budget tier overrides, given directly in local currency
+// (bypasses the USD -> local rate conversion entirely for these countries).
+const COUNTRY_TIER_OVERRIDES: Record<string, number[]> = {
+  PK: [50000, 100000, 250000], // Rs: Under 50K, 50K-100K, 100K-250K, 250K+
+};
 
 function fmt(amount: number, symbol: string, rate: number): string {
   const v = Math.round(amount * rate);
@@ -41,13 +47,15 @@ function fmt(amount: number, symbol: string, rate: number): string {
   return `${symbol}${v.toLocaleString()}`;
 }
 
-function getBudgetTiers(symbol: string, rate: number) {
-  const [a, b, c] = USD_TIERS;
+function getBudgetTiers(symbol: string, rate: number, countryCode?: string) {
+  const override = countryCode ? COUNTRY_TIER_OVERRIDES[countryCode] : undefined;
+  const [a, b, c] = override ?? USD_TIERS;
+  const effectiveRate = override ? 1 : rate;
   return [
-    `Under ${fmt(a, symbol, rate)}`,
-    `${fmt(a, symbol, rate)} – ${fmt(b, symbol, rate)}`,
-    `${fmt(b, symbol, rate)} – ${fmt(c, symbol, rate)}`,
-    `${fmt(c, symbol, rate)}+`,
+    `Under ${fmt(a, symbol, effectiveRate)}`,
+    `${fmt(a, symbol, effectiveRate)} – ${fmt(b, symbol, effectiveRate)}`,
+    `${fmt(b, symbol, effectiveRate)} – ${fmt(c, symbol, effectiveRate)}`,
+    `${fmt(c, symbol, effectiveRate)}+`,
     'Custom Budget',
   ];
 }
