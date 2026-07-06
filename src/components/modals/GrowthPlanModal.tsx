@@ -123,7 +123,7 @@ export const GrowthPlanModal: React.FC<GrowthPlanModalProps> = ({
 
   // Derived currency info from selected country
   const selectedCountry = COUNTRIES.find(c => c.code === formData.country) || COUNTRIES[0];
-  const budgetTiers = getBudgetTiers(selectedCountry.symbol, selectedCountry.rate);
+  const budgetTiers = getBudgetTiers(selectedCountry.symbol, selectedCountry.rate, selectedCountry.code);
   const isCustomBudget = formData.estimatedBudget === 'Custom Budget';
 
   // Map services to their sub-options
