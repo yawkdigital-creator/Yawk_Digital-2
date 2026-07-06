@@ -1,5 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
@@ -86,6 +87,7 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider>
+      <Analytics />
       <PixelManager />
       <ScrollToTop />
       <Suspense fallback={<PageLoader />}>
