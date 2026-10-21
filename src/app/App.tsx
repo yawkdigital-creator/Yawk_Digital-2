@@ -6,6 +6,18 @@ import { Footer } from '@/components/layout/Footer';
 import { CustomCursor } from '@/components/ui/CustomCursor';
 import { FloatingCTA } from '@/components/ui/FloatingCTA';
 import { Hero } from '@/components/sections/Hero';
+import { HeroMedia } from '@/components/sections/HeroMedia';
+import { ReviewsStrip } from '@/components/sections/ReviewsStrips';
+import { HowItWorks } from '@/components/sections/HowitWorks';
+import { PricingBuilder } from '@/components/sections/PriceBuilder';
+import { Guarantee } from '@/components/sections/Guarantee';
+import { CostComparison } from '@/components/sections/CostComparison';
+import { ServicesShowcase } from '@/components/sections/ServicesShowcase';
+import { CaseStudiesShowcase } from '@/components/sections/CaseStudiesShowcase';
+import { ClientStories } from '@/components/sections/ClientStories';
+import { BlogSection } from '@/components/sections/BlogSection';
+import { Portfolio } from '@/components/sections/Portfolio';
+import { FAQ } from '@/components/sections/FAQ';
 import { TrustedByLeaders } from '@/components/sections/TrustedByLeaders';
 import { Services } from '@/components/sections/Services';
 import { VerticalExpertise } from '@/components/sections/VerticalExpertise';
@@ -132,13 +144,26 @@ const App: React.FC = () => {
 
       <main className="relative z-10">
         <Hero onCtaClick={handleGrowthPlanOpen} onWatchProcess={handleWatchProcess} />
-                <TrustedByLeaders onCtaClick={handleGrowthPlanOpen} />
+
+                <HeroMedia onCtaClick={handleGrowthPlanOpen} />
+                <ReviewsStrip />
+                <HowItWorks />
+                <Portfolio />
+                <PricingBuilder onStartPlan={handleGrowthPlanOpen} />
+                <Guarantee onCtaClick={handleGrowthPlanOpen} />
+                <CostComparison onCtaClick={handleGrowthPlanOpen} />
+                <ServicesShowcase />
+                <CaseStudiesShowcase />
+                <ClientStories />
+                <BlogSection />
+                <FAQ />
+                {/*<TrustedByLeaders onCtaClick={handleGrowthPlanOpen} />
                 <LogoCarousel />
                 <Services />
                 <VerticalExpertise onVerticalClick={handleVerticalClick} />
                 <Process />
                 <WhyChooseUs />
-        <Testimonials />
+        <Testimonials />*/}
         <CTA onPlanClick={handleGrowthPlanOpen} onStrategyClick={handleContactOpen} />
       </main>
 

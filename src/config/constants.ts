@@ -76,9 +76,11 @@ export const HERO_METRICS: Metric[] = [
 ];
 
 export const NAVIGATION_LINKS = [
-  { label: 'Services', href: '#services' },
-  { label: 'Process', href: '#process' },
-  { label: 'Insights', href: '#insights' },
+  { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Comparison', href: '#comparison' },
+  { label: 'Portfolio', href: '#portfolio' },
+  { label: 'Our Plan Builder', href: '#plan-builder' },
+  { label: 'Blog', href: '#blog' },
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
