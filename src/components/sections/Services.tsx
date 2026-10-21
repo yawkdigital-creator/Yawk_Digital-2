@@ -36,7 +36,7 @@ export const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
   };
 
   return (
-    <section id="services" className="py-16 sm:py-20 md:py-24 bg-slate-50 dark:bg-[#030712] relative overflow-hidden transition-colors duration-300">
+    <section id="services-legacy" className="py-16 sm:py-20 md:py-24 bg-slate-50 dark:bg-[#030712] relative overflow-hidden transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 sm:gap-8 mb-12 sm:mb-16 md:mb-20">
           <div className="max-w-3xl">

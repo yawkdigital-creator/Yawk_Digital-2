@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Bookmark, ChevronRight, Heart, MessageCircle, Play, Send, Sparkles, Users, Image as ImageIcon, Video } from 'lucide-react';
+import port1 from '@/assets/images/port1.jpeg';
+import port2 from '@/assets/images/port2.jpeg';
+import port3 from '@/assets/images/port3.jpeg';
+import port4 from '@/assets/images/port4.jpeg';
+import port5 from '@/assets/images/port5.jpeg';
+import port6 from '@/assets/images/port6.jpeg';
+import img12 from '@/assets/images/img12.jpeg';
+import img13 from '@/assets/images/img13.jpeg';
+import img15 from '@/assets/images/img15.jpeg';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    Portfolio: "Truly great content, not AI slop." grid with working tabs, filter chips,
@@ -19,18 +28,20 @@ const BLUE = '#3b5bff';
 const unsplash = (id: string) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=600&q=70`;
 
-const PHOTOS = [
-  '/src/assets/images/port5.jpeg',
-  '/src/assets/images/port2.jpeg',
-  '/src/assets/images/port1.jpeg',
-  '/src/assets/images/port3.jpeg',
-  '/src/assets/images/port4.jpeg',
-  '/src/assets/images/img15.jpeg',
-  '/src/assets/images/port6.jpeg',
-  '/src/assets/images/port7.jpeg',
-  '/src/assets/images/port8.jpeg',
-  '/src/assets/images/img13.jpeg',
-  '/src/assets/images/img12.jpeg',
+// port7.jpeg and port8.jpeg do not exist in src/assets/images — those slots
+// intentionally fall back to their gradient background (see GRADS below).
+const PHOTOS: (string | undefined)[] = [
+  port5,
+  port2,
+  port1,
+  port3,
+  port4,
+  img15,
+  port6,
+  undefined, // was port7.jpeg (missing)
+  undefined, // was port8.jpeg (missing)
+  img13,
+  img12,
 ];
 
 const GRADS = [
@@ -45,7 +56,7 @@ const GRADS = [
 type Kind = 'posts' | 'videos' | 'ugc';
 type Industry = 'Featured' | 'All' | 'Products' | 'Food & Drink' | 'Health & Beauty' | 'Professional Services' | 'Home Services' | 'Real Estate';
 
-type Item = { id: string; kind: Kind; industry: Exclude<Industry, 'Featured' | 'All'>; bg: string; image: string; featured?: boolean };
+type Item = { id: string; kind: Kind; industry: Exclude<Industry, 'Featured' | 'All'>; bg: string; image?: string; featured?: boolean };
 
 // Placeholder items: swap `image` for your real work.
 const RAW: { kind: Kind; industry: Item['industry']; featured?: boolean }[] = [
@@ -80,14 +91,19 @@ const matches = (item: Item, chip: Industry) =>
 const Tile: React.FC<{ item: Item }> = ({ item }) => (
   <article className="group min-w-0 overflow-hidden rounded-[14px] border border-black/5 bg-[#FBFAF9] shadow-[0_12px_26px_-20px_rgba(15,23,42,0.4)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_36px_-20px_rgba(15,23,42,0.45)]">
     <div className="relative aspect-[4/5] w-full overflow-hidden" style={{ background: item.bg }}>
-      <img
-        src={item.image}
-        alt=""
-        loading="lazy"
-        draggable={false}
-        className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
-      />
+      {item.image && (
+        <img
+          src={item.image}
+          alt=""
+          loading="lazy"
+          draggable={false}
+          className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+          onError={(e) => {
+            console.warn('Image failed to load', e.currentTarget.src);
+            e.currentTarget.style.display = 'none';
+          }}
+        />
+      )}
       {item.kind === 'videos' && (
         <span className="absolute left-1/2 top-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow-lg">
           <Play className="h-3 w-3 fill-slate-900" />

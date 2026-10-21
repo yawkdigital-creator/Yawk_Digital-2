@@ -1,5 +1,5 @@
-import { Service, LucideIcon } from '@/types';
-import { Code2, Palette, TrendingUp, Layers } from 'lucide-react';
+import { Service } from '@/types';
+import { Code2, Palette, TrendingUp, Layers, type LucideIcon } from 'lucide-react';
 
 export interface ServiceDetail extends Omit<Service, 'icon'> {
   icon: LucideIcon;
@@ -10,6 +10,7 @@ export interface ServiceDetail extends Omit<Service, 'icon'> {
     label: string;
     value: string | number;
     suffix?: string;
+    prefix?: string;
   }[];
   refId: string;
 }

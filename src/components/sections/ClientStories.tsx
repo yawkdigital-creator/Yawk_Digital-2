@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Star, Play } from 'lucide-react';
+import vid1 from '@/assets/videos/vid1.mp4';
+import vid2 from '@/assets/videos/vid2.mp4';
+import vid3 from '@/assets/videos/vid3.mp4';
+import vid4 from '@/assets/videos/vid4.mp4';
+import vid5 from '@/assets/videos/vid5.mp4';
+import vid6 from '@/assets/videos/vid6.mp4';
 
 const CARD_WIDTH = 256; // w-64
 const CARD_GAP = 16; // gap-4
 const INITIAL_REVIEWS = 6;
 
 const CLIENT_STORIES = [
-  { id: 's1', duration: '0:14', videoUrl: '/src/assets/videos/vid4.mp4' },
-  { id: 's2', duration: '0:19', videoUrl: '/src/assets/videos/vid3.mp4' },
-  { id: 's3', duration: '0:15', videoUrl: '/src/assets/videos/vid2.mp4' },
-  { id: 's4', duration: '0:10', videoUrl: '/src/assets/videos/vid5.mp4' },
-  { id: 's5', duration: '0:16', videoUrl: '/src/assets/videos/vid6.mp4' },
-  { id: 's6', duration: '0:15', videoUrl: '/src/assets/videos/vid1.mp4' },
+  { id: 's1', duration: '0:14', videoUrl: vid4 },
+  { id: 's2', duration: '0:19', videoUrl: vid3 },
+  { id: 's3', duration: '0:15', videoUrl: vid2 },
+  { id: 's4', duration: '0:10', videoUrl: vid5 },
+  { id: 's5', duration: '0:16', videoUrl: vid6 },
+  { id: 's6', duration: '0:15', videoUrl: vid1 },
 ];
 
 const CLIENT_REVIEWS = [
@@ -271,6 +277,7 @@ export const ClientStories: React.FC = () => {
                     <video
                       src={story.videoUrl}
                       controls
+                      muted
                       playsInline
                       preload="metadata"
                       className="absolute inset-0 w-full h-full object-cover"

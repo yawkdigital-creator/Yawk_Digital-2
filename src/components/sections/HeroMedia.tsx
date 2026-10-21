@@ -1,13 +1,23 @@
 import React from 'react';
 import { ArrowRight, Check, Play, Star } from 'lucide-react';
+import img1 from '@/assets/images/img1.jpeg';
+import img2 from '@/assets/images/img2.jpeg';
+import img3 from '@/assets/images/img3.jpeg';
+import img4 from '@/assets/images/img4.jpeg';
+import img5 from '@/assets/images/img5.jpeg';
+import img6 from '@/assets/images/img6.jpeg';
+import img7 from '@/assets/images/img7.jpeg';
+import img8 from '@/assets/images/img8.jpeg';
+import img9 from '@/assets/images/img9.jpeg';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    HERO MEDIA
    - Left: rating row, headline, paragraph, checklist, CTAs
    - Right: 3-column image wall on desktop/tablet, 2 columns on mobile.
      Side columns scroll UP, middle scrolls DOWN.
-   - All 9 cards use local images from public/images/
-   - Replace the image files in public/images/ whenever you want new photos.
+   - All 9 cards use local images from src/assets/images/
+   - Replace the imports above (and their files in src/assets/images/) whenever
+     you want new photos.
    - Layout, card sizes, animations, hover pause, and labels are preserved.
    ───────────────────────────────────────────────────────────────────────────── */
 
@@ -56,13 +66,13 @@ const COLUMNS: {
         id: 'a1',
         label: 'WEB DESIGN',
         size: 'lg',
-        image: '/src/assets/images/img1.jpeg',
+        image: img1,
       },
       {
         id: 'a2',
         label: 'ADS',
         size: 'sm',
-        image: '/src/assets/images/img8.jpeg',
+        image: img8,
         title: 'ROAS 4.2x',
         dark: true,
       },
@@ -70,7 +80,7 @@ const COLUMNS: {
         id: 'a3',
         label: 'SHORT-FORM',
         size: 'xl',
-        image: '/src/assets/images/img3.jpeg',
+        image: img3,
         play: true,
       },
     ],
@@ -84,7 +94,7 @@ const COLUMNS: {
         id: 'b1',
         label: 'SOCIAL',
         size: 'xs',
-        image: '/src/assets/images/img2.jpeg',
+        image: img2,
         title: 'Leaking revenue?',
         serif: true,
         dark: true,
@@ -93,14 +103,14 @@ const COLUMNS: {
         id: 'b2',
         label: 'UGC VIDEO',
         size: 'lg',
-        image: '/src/assets/images/img4.jpeg',
+        image: img4,
         play: true,
       },
       {
         id: 'b3',
         label: 'LANDING PAGE',
         size: 'md',
-        image: '/src/assets/images/img5.jpeg',
+        image: img5,
         title: 'Launch in 14 days',
         dark: true,
       },
@@ -115,7 +125,7 @@ const COLUMNS: {
         id: 'c1',
         label: 'EMAIL',
         size: 'md',
-        image: '/src/assets/images/img6.jpeg',
+        image: img6,
         title: 'Stop guessing.',
         serif: true,
       },
@@ -123,13 +133,13 @@ const COLUMNS: {
         id: 'c2',
         label: 'AI AUTOMATION',
         size: 'xs',
-        image: '/src/assets/images/img7.jpeg',
+        image: img7,
       },
       {
         id: 'c3',
         label: 'CASE STUDY',
         size: 'xl',
-        image: '/src/assets/images/img9.jpeg',
+        image: img9,
         title: '+312%',
         sub: 'in 90 days',
         dark: true,
@@ -153,6 +163,7 @@ const Card: React.FC<{ c: MediaCard }> = ({ c }) => (
         loading="lazy"
         draggable={false}
         onError={(e) => {
+          console.warn('Image failed to load', e.currentTarget.src);
           e.currentTarget.style.display = 'none';
         }}
         className="absolute inset-0 h-full w-full object-cover"
